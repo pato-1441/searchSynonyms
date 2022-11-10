@@ -3,9 +3,9 @@ import React, { useState } from "react";
 type Props = {};
 
 const WordInput = (props: Props) => {
-  const [word, setWord] = useState("");
+  const [wordInput, setWordInput] = useState("");
 
-  const [synonyms, setSynonyms] = useState([]);
+  const [synonyms, setSynonyms] = useState<any[]>([]);
   console.log(synonyms);
 
   const getSynonyms = async (e: React.FormEvent, word: string) => {
@@ -22,7 +22,7 @@ const WordInput = (props: Props) => {
       <div>
         <form
           className="flex flex-col gap-4"
-          onSubmit={(e) => getSynonyms(e, word)}
+          onSubmit={(e) => getSynonyms(e, wordInput)}
         >
           <label htmlFor="wordInput" className="text-2xl">
             Search Synonyms App
@@ -30,8 +30,8 @@ const WordInput = (props: Props) => {
           <div className="flex justify-between gap-2">
             <input
               id="wordInput"
-              onChange={(e) => setWord(e.target.value)}
-              value={word}
+              onChange={(e) => setWordInput(e.target.value)}
+              value={wordInput}
               type="text"
               className="text-black px-2 py-1 rounded bg-gray-200 hover:bg-white focus:bg-white"
               placeholder="Insert a word to search for synonyms"
@@ -43,9 +43,14 @@ const WordInput = (props: Props) => {
         </form>
       </div>
       <div className="mt-4">
-        <ul>
-          {synonyms && synonyms.map((synonym) => <li>- {synonym.word}</li>)}
-        </ul>
+        {synonyms.length === 0 && <h2>- Results: 0</h2>}
+        {synonyms.length > 0 && <h2 className="font-semibold">Results: {synonyms.length}</h2>}
+        {synonyms.length > 0 &&
+          synonyms.map((synonym) => (
+            <ul>
+              <li key={synonym.word}>- {synonym.word}</li>
+            </ul>
+          ))}
       </div>
     </div>
   );
