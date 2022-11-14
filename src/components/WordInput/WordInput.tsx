@@ -2,10 +2,15 @@ import React, { useState } from "react";
 
 type Props = {};
 
-const WordInput = (props: Props) => {
-  const [wordInput, setWordInput] = useState("");
+interface Synonym {
+  word: string,
+  score: number
+}
 
-  const [synonyms, setSynonyms] = useState<any[]>([]);
+const WordInput = (props: Props) => {
+  let [wordInput, setWordInput] = useState<string>("");
+
+  const [synonyms, setSynonyms] = useState<Array<Synonym>>([]);
   console.log(synonyms);
 
   const getSynonyms = async (e: React.FormEvent, word: string) => {
@@ -14,6 +19,7 @@ const WordInput = (props: Props) => {
       `https://api.datamuse.com/words?rel_syn=${word}&max=15`
     );
     const synonyms = await response.json();
+    setWordInput(word)
     return setSynonyms(synonyms);
   };
 
@@ -48,7 +54,7 @@ const WordInput = (props: Props) => {
         {synonyms.length > 0 &&
           synonyms.map((synonym) => (
             <ul>
-              <li key={synonym.word}>- {synonym.word}</li>
+              <li key={synonym.word} className='cursor-pointer' onClick={(e)=>getSynonyms(e,synonym.word)}>- {synonym.word}</li>
             </ul>
           ))}
       </div>
