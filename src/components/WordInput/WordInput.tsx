@@ -54,7 +54,7 @@ const WordInput = (props: Props) => {
         {synonyms.length > 0 &&
           synonyms.map((synonym) => (
             <ul>
-              <li key={synonym.word} className='cursor-pointer' onClick={(e)=>getSynonyms(e,synonym.word)}>- {synonym.word}</li>
+              <li key={synonym.word}>- <span className='cursor-pointer hover:underline' onClick={(e)=>getSynonyms(e,synonym.word)}>{synonym.word}</span></li>
             </ul>
           ))}
       </div>
