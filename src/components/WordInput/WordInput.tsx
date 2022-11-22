@@ -11,7 +11,6 @@ const WordInput = (props: Props) => {
   let [wordInput, setWordInput] = useState<string>("");
 
   const [synonyms, setSynonyms] = useState<Array<Synonym>>([]);
-  console.log(synonyms);
 
   const getSynonyms = async (e: React.FormEvent, word: string) => {
     e.preventDefault();
@@ -30,10 +29,15 @@ const WordInput = (props: Props) => {
           className="flex flex-col gap-4"
           onSubmit={(e) => getSynonyms(e, wordInput)}
         >
-          <label htmlFor="wordInput" className="text-2xl">
+          <label htmlFor="wordInput" className="text-2xl text-center">
             Search Synonyms App
           </label>
           <div className="flex justify-between gap-2">
+            <button onClick={()=>setWordInput('')} className="px-2 py-1 rounded bg-red-600">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             <input
               id="wordInput"
               onChange={(e) => setWordInput(e.target.value)}
@@ -42,7 +46,7 @@ const WordInput = (props: Props) => {
               className="text-black px-2 py-1 rounded bg-gray-200 hover:bg-white focus:bg-white"
               placeholder="Insert a word to search for synonyms"
             />
-            <button type="submit" className="px-2 py-1 rounded bg-gray-600">
+            <button type="submit" className="px-2 py-1 rounded bg-gray-600 font-semibold">
               Go
             </button>
           </div>
