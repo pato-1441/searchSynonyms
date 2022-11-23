@@ -15,7 +15,7 @@ const WordInput = (props: Props) => {
   const getSynonyms = async (e: React.FormEvent, word: string) => {
     e.preventDefault();
     const response = await fetch(
-      `https://api.datamuse.com/words?rel_jjb=${word}&max=20`
+      `https://api.datamuse.com/words?rel_syn=${word}&max=20`
     );
     const synonyms = await response.json();
     setWordInput(word);
@@ -84,14 +84,31 @@ const WordInput = (props: Props) => {
         <ul className="grid grid-cols-2 gap-2 mt-2">
           {synonyms.length > 0 &&
             synonyms.map((synonym) => (
-              <li key={synonym.word} className="rounded bg-gray-600 px-2 py-1 cursor-pointer">
-                -{" "}
-                <span
-                  className=""
-                  onClick={(e) => getSynonyms(e, synonym.word)}
-                >
-                  {synonym.word}
-                </span>
+              <li
+                key={synonym.word}
+                className="rounded bg-gray-600 px-2 py-1 cursor-pointer"
+              >
+                <div className="flex justify-between items-center" onClick={(e) => getSynonyms(e, synonym.word)}>
+                  <span>
+                    {synonym.word}
+                  </span>
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                      />
+                    </svg>
+                  </span>
+                </div>
               </li>
             ))}
         </ul>
