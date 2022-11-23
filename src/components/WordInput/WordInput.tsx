@@ -36,33 +36,37 @@ const WordInput = (props: Props) => {
             Search Synonyms App
           </label>
           <div className="flex justify-between gap-2">
-            <button
-              onClick={() => setWordInput("")}
-              className="px-2 py-1 rounded bg-red-600 hover:bg-red-500"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={3}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <input
-              id="wordInput"
-              onChange={(e) => setWordInput(e.target.value)}
-              value={wordInput}
-              type="text"
-              className="text-black px-2 py-1 rounded bg-gray-200 hover:bg-white focus:bg-white"
-              placeholder="fire"
-            />
+            <div className="rounded bg-white hover:bg-white focus:bg-white flex">
+              <input
+                id="wordInput"
+                onChange={(e) => setWordInput(e.target.value)}
+                value={wordInput}
+                type="text"
+                className="rounded text-black px-2 py-1"
+                placeholder="fire"
+              />
+              {wordInput.length > 0 && (
+                <button
+                  onClick={() => setWordInput("")}
+                  className="px-2 py-1 text-gray-600"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={3}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
             <button
               type="submit"
               className="px-2 py-1 rounded bg-gray-600 hover:bg-gray-500"
