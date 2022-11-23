@@ -23,13 +23,16 @@ const WordInput = (props: Props) => {
   };
 
   return (
-    <div>
+    <div className="mt-32">
       <div>
         <form
           className="flex flex-col gap-4"
           onSubmit={(e) => getSynonyms(e, wordInput)}
         >
-          <label htmlFor="wordInput" className="text-center font-semibold text-2xl">
+          <label
+            htmlFor="wordInput"
+            className="text-center font-semibold text-2xl"
+          >
             Search Synonyms App
           </label>
           <div className="flex justify-between gap-2">
@@ -60,7 +63,10 @@ const WordInput = (props: Props) => {
               className="text-black px-2 py-1 rounded bg-gray-200 hover:bg-white focus:bg-white"
               placeholder="fire"
             />
-            <button type="submit" className="px-2 py-1 rounded bg-gray-600 hover:bg-gray-500">
+            <button
+              type="submit"
+              className="px-2 py-1 rounded bg-gray-600 hover:bg-gray-500"
+            >
               Go
             </button>
           </div>
