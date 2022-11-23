@@ -35,7 +35,7 @@ const WordInput = (props: Props) => {
           <div className="flex justify-between gap-2">
             <button
               onClick={() => setWordInput("")}
-              className="px-2 py-1 rounded bg-red-600"
+              className="px-2 py-1 rounded bg-red-600 hover:bg-red-500"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const WordInput = (props: Props) => {
               className="text-black px-2 py-1 rounded bg-gray-200 hover:bg-white focus:bg-white"
               placeholder="fire"
             />
-            <button type="submit" className="px-2 py-1 rounded bg-gray-600">
+            <button type="submit" className="px-2 py-1 rounded bg-gray-600 hover:bg-gray-500">
               Go
             </button>
           </div>
