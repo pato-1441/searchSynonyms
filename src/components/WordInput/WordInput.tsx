@@ -15,7 +15,7 @@ const WordInput = (props: Props) => {
   const getSynonyms = async (e: React.FormEvent, word: string) => {
     e.preventDefault();
     const response = await fetch(
-      `https://api.datamuse.com/words?rel_jjb=${word}&max=15`
+      `https://api.datamuse.com/words?rel_jjb=${word}&max=20`
     );
     const synonyms = await response.json();
     setWordInput(word);
@@ -81,20 +81,20 @@ const WordInput = (props: Props) => {
         {synonyms.length > 0 && (
           <h2 className="">Results: {synonyms.length}</h2>
         )}
-        {synonyms.length > 0 &&
-          synonyms.map((synonym) => (
-            <ul>
-              <li key={synonym.word}>
+        <ul className="grid grid-cols-2 gap-2 mt-2">
+          {synonyms.length > 0 &&
+            synonyms.map((synonym) => (
+              <li key={synonym.word} className="rounded bg-gray-600 px-2 py-1 cursor-pointer">
                 -{" "}
                 <span
-                  className="cursor-pointer hover:underline"
+                  className=""
                   onClick={(e) => getSynonyms(e, synonym.word)}
                 >
                   {synonym.word}
                 </span>
               </li>
-            </ul>
-          ))}
+            ))}
+        </ul>
       </div>
     </div>
   );
