@@ -23,7 +23,7 @@ const WordInput = (props: Props) => {
   };
 
   return (
-    <div className="mt-32">
+    <div className="mt-20">
       <div>
         <form
           className="flex flex-col gap-4"
@@ -35,7 +35,7 @@ const WordInput = (props: Props) => {
           >
             Search Synonyms App
           </label>
-          <div className="flex justify-between gap-2">
+          <div className="flex justify-center gap-2">
             <div className="rounded bg-white hover:bg-white focus:bg-white flex">
               <input
                 id="wordInput"
@@ -88,10 +88,11 @@ const WordInput = (props: Props) => {
                 key={synonym.word}
                 className="rounded bg-gray-600 px-2 py-1 cursor-pointer"
               >
-                <div className="flex justify-between items-center" onClick={(e) => getSynonyms(e, synonym.word)}>
-                  <span>
-                    {synonym.word}
-                  </span>
+                <div
+                  className="flex justify-between items-center"
+                  onClick={(e) => getSynonyms(e, synonym.word)}
+                >
+                  <span>{synonym.word}</span>
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
