@@ -43,7 +43,7 @@ const WordInput = (props: Props) => {
                 value={wordInput}
                 type="text"
                 className="rounded text-black px-2 py-1"
-                placeholder="fire"
+                placeholder="type some word here..."
               />
               {wordInput.length > 0 && (
                 <button
